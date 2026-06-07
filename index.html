@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kappa Pod · Your Discord Starter Guide</title>
+<meta name="title" content="Kappa Pod · Your Discord Starter Guide">
+<meta name="description" content="A guide that walks you through everything, from making an account to chatting, studying, and joining voice calls.">
+<!-- Open Graph / Facebook / Discord -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://github.io">
+<meta property="og:title" content="Kappa Pod · Your Discord Starter Guide">
+<meta property="og:description" content="A guide that walks you through everything, from making an account to chatting, studying, and joining voice calls.">
+<meta property="og:image" content="https://github.iopreview-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#09090b;
+    --bg-raised:#111113;
+    --bg-card:#141417;
+    --border:#26262b;
+    --border-soft:#1d1d21;
+    --text:#ededf0;
+    --text-dim:#a1a1aa;
+    --text-faint:#6b6b73;
+    --accent:#8b5cf6;
+    --accent-dim:#7c3aed;
+    --accent-glow:rgba(139,92,246,.15);
+    --green:#4ade80;
+    --amber:#fbbf24;
+    --serif:'Instrument Serif',Georgia,serif;
+    --sans:'DM Sans',system-ui,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--text);font-family:var(--sans);
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.025) 1px, transparent 0);
+    background-size:32px 32px;pointer-events:none;z-index:0;
+  }
+  .wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 24px}
+
+  /* HEADER */
+  header{padding:100px 0 56px;position:relative}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,8vw,82px);line-height:.98;letter-spacing:-.01em;margin-bottom:22px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{font-size:19px;color:var(--text-dim);max-width:600px}
+  .lede strong{color:var(--text);font-weight:500}
+  .glow{position:absolute;top:-80px;right:-120px;width:380px;height:380px;background:radial-gradient(circle,var(--accent-glow),transparent 70%);filter:blur(40px);pointer-events:none}
+
+  /* TABLE OF CONTENTS */
+  .toc{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:14px;
+    padding:24px 28px;margin-top:40px;
+  }
+  .toc-title{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px}
+  .toc ol{list-style:none;counter-reset:toc;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px}
+  .toc li{counter-increment:toc;position:relative;padding-left:30px}
+  .toc li::before{content:counter(toc,decimal-leading-zero);position:absolute;left:0;font-family:var(--mono);font-size:12px;color:var(--accent);top:3px}
+  .toc a{color:var(--text-dim);font-size:15px}
+  .toc a:hover{color:var(--accent)}
+
+  /* SECTIONS */
+  section{padding:48px 0;border-top:1px solid var(--border-soft)}
+  .sec-num{font-family:var(--mono);font-size:13px;color:var(--text-faint);letter-spacing:.1em;margin-bottom:14px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.5vw,42px);line-height:1.05;letter-spacing:-.01em;margin-bottom:20px}
+  h3{font-family:var(--sans);font-weight:600;font-size:17px;margin:30px 0 12px;letter-spacing:-.01em}
+  p{color:var(--text-dim);margin-bottom:16px;max-width:660px}
+  p strong{color:var(--text);font-weight:600}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+  a:hover{border-color:var(--accent)}
+
+  /* PLATFORM TABS */
+  .platforms{display:flex;gap:8px;margin:18px 0 4px;flex-wrap:wrap}
+  .ptab{
+    font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--text-faint);
+    padding:7px 14px;border:1px solid var(--border-soft);border-radius:8px;
+  }
+  .ptab span{color:var(--accent)}
+
+  /* STEPS */
+  .steps{list-style:none;counter-reset:step;margin:8px 0}
+  .steps li{position:relative;padding:18px 0 18px 56px;border-bottom:1px solid var(--border-soft);color:var(--text-dim)}
+  .steps li:last-child{border-bottom:none}
+  .steps li::before{
+    counter-increment:step;content:counter(step);position:absolute;left:0;top:16px;
+    width:34px;height:34px;border-radius:9px;background:var(--bg-raised);border:1px solid var(--border);
+    color:var(--accent);font-family:var(--mono);font-size:14px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .steps li strong{color:var(--text);font-weight:600}
+  code{font-family:var(--mono);font-size:13px;background:var(--bg-raised);border:1px solid var(--border-soft);padding:2px 7px;border-radius:5px;color:var(--text)}
+
+  /* CHANNEL CARDS */
+  .ch-card{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+    padding:18px 20px;margin-bottom:12px;
+  }
+  .ch-icon{
+    flex-shrink:0;width:42px;height:42px;border-radius:10px;background:var(--bg-raised);
+    border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:18px;color:var(--accent);font-weight:600;
+  }
+  .ch-card .ch-body{flex:1}
+  .ch-card .ch-name{font-family:var(--mono);font-size:15px;color:var(--text);font-weight:600;margin-bottom:3px}
+  .ch-card .ch-type{font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase}
+  .ch-card .ch-desc{color:var(--text-dim);font-size:14.5px;margin-top:8px}
+
+  /* CALLOUT */
+  .callout{background:linear-gradient(180deg,var(--bg-card),var(--bg-raised));border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:20px 24px;margin:24px 0}
+  .callout .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .callout p{margin-bottom:0;color:var(--text-dim);font-size:15px}
+  .callout.warn{border-left-color:var(--amber)}
+  .callout.warn .tag{color:var(--amber)}
+  .callout.good{border-left-color:var(--green)}
+  .callout.good .tag{color:var(--green)}
+
+  /* INLINE CHIP */
+  .chip{font-family:var(--mono);font-size:13px;color:var(--accent);background:var(--accent-glow);padding:1px 7px;border-radius:5px;white-space:nowrap}
+
+  /* DO / DONT */
+  .dd{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+  .dd-col{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px}
+  .dd-col h4{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+  .dd-col.do h4{color:var(--green)}
+  .dd-col.dont h4{color:var(--amber)}
+  .dd-col ul{list-style:none}
+  .dd-col li{color:var(--text-dim);font-size:14px;padding:6px 0 6px 22px;position:relative}
+  .dd-col.do li::before{content:"✓";position:absolute;left:0;color:var(--green)}
+  .dd-col.dont li::before{content:"✕";position:absolute;left:0;color:var(--amber)}
+
+  /* FOOTER */
+  footer{padding:60px 0 100px;border-top:1px solid var(--border-soft);text-align:center}
+  footer p{color:var(--text-faint);font-size:14px;margin:0 auto}
+  footer .mark{font-family:var(--serif);font-size:26px;color:var(--text);margin-bottom:8px}
+  footer .mark em{color:var(--accent);font-style:italic}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);animation:rise .7s ease forwards}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  header .eyebrow{animation-delay:.05s}
+  header h1{animation-delay:.15s}
+  header .lede{animation-delay:.28s}
+  header .toc{animation-delay:.4s}
+
+  @media(max-width:600px){
+    header{padding:70px 0 40px}
+    .toc ol{grid-template-columns:1fr}
+    .dd{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="glow"></div>
+    <div class="eyebrow reveal">Kappa Pod · Starter Guide</div>
+    <h1 class="reveal">New to Discord?<br><em>Start here.</em></h1>
+    <p class="lede reveal">No experience needed. This guide walks you through everything, from making an account to chatting, studying, and joining voice calls with your <strong>kappa</strong> pod. Take it one step at a time. 💜</p>
+
+    <nav class="toc reveal">
+      <div class="toc-title">What's inside</div>
+      <ol>
+        <li><a href="#s1">What is Discord?</a></li>
+        <li><a href="#s2">Get an account &amp; join</a></li>
+        <li><a href="#s3">The screen, explained</a></li>
+        <li><a href="#s4">Your channels</a></li>
+        <li><a href="#s5">Sending messages</a></li>
+        <li><a href="#s6">Using voice (🔊 Live)</a></li>
+        <li><a href="#s7">How to be a great podmate</a></li>
+        <li><a href="#s8">Study tips</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <!-- 1 -->
+  <section id="s1">
+    <div class="sec-num">01 / THE BASICS</div>
+    <h2>What is Discord?</h2>
+    <p>Think of Discord as a clubhouse for your study group. It's a free app where people chat by typing, talk out loud in voice rooms, and share files and links, all in one place.</p>
+    <p>Our clubhouse is called a <strong>server</strong>. Inside it are <strong>channels</strong>, which are like separate rooms, each for a different purpose. One room is for questions, one is for resources, one is for talking out loud, and so on. You'll get the hang of it fast.</p>
+    <div class="callout good">
+      <div class="tag">No pressure</div>
+      <p>You don't need to understand everything before you start. Just get in, say hi, and learn as you go. Everyone here was new once.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <div class="sec-num">02 / GETTING IN</div>
+    <h2>Get an account &amp; join</h2>
+    <p>You can use Discord three ways: in a <strong>web browser</strong> (nothing to install), as a <strong>desktop app</strong> (Windows/Mac), or as a <strong>phone app</strong> (iPhone/Android). Pick whatever's easiest, you can use more than one, and your account syncs across all of them.</p>
+
+    <div class="platforms">
+      <div class="ptab"><span>◆</span> Web</div>
+      <div class="ptab"><span>◆</span> Desktop app</div>
+      <div class="ptab"><span>◆</span> Phone app</div>
+    </div>
+
+    <h3>Step 1 — Create your free account</h3>
+    <ol class="steps">
+      <li><strong>Web:</strong> go to <code>discord.com</code> and click <strong>Login</strong>, then <strong>Register</strong>. <strong>Phone:</strong> install "Discord" from the App Store or Google Play and tap <strong>Register</strong>.</li>
+      <li>Enter your email (or phone number), pick a username and password, and add your birthday.</li>
+      <li>Check your email for a verification message from Discord and click the link inside. That confirms your account.</li>
+    </ol>
+
+    <h3>Step 2 — Join the kappa server</h3>
+    <ol class="steps">
+      <li>Click the <strong>invite link</strong> your organizer sent you (it looks like <code>discord.gg/xxxxx</code>).</li>
+      <li>It opens Discord and shows an <strong>Accept Invite</strong> button. Click it.</li>
+      <li>You're in! 🎉 You'll see the server appear on the left edge of your screen.</li>
+    </ol>
+    <div class="callout warn">
+      <div class="tag">If the link doesn't work</div>
+      <p>Invite links can expire for safety. If yours says "invalid or expired," just ask your organizer for a fresh one. It's normal, not something you did wrong.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <div class="sec-num">03 / THE LAYOUT</div>
+    <h2>The screen, explained</h2>
+    <p>When you open the server, the screen has three main parts. Once you know these, you'll never feel lost.</p>
+
+    <div class="ch-card">
+      <div class="ch-icon">◧</div>
+      <div class="ch-body">
+        <div class="ch-name">Far left — server list</div>
+        <div class="ch-desc">A vertical strip of circle icons. Each circle is a different server you've joined. Our kappa server lives here, click its icon to enter it.</div>
+      </div>
+    </div>
+    <div class="ch-card">
+      <div class="ch-icon">☰</div>
+      <div class="ch-body">
+        <div class="ch-name">Middle-left — channel list</div>
+        <div class="ch-desc">All the rooms inside the server. Channels with a <code>#</code> are text rooms (you type). Channels with a <code>🔊</code> are voice rooms (you talk). Click any channel to open it.</div>
+      </div>
+    </div>
+    <div class="ch-card">
+      <div class="ch-icon">▭</div>
+      <div class="ch-body">
+        <div class="ch-name">Center — the conversation</div>
+        <div class="ch-desc">The big area where messages appear. At the bottom is the box where you type. This is where most of the action happens.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="tag">Categories</div>
+      <p>You'll notice the channel list has bold gray headings like <strong>INFO</strong> and <strong>STEADY</strong>. Those are just labels that group related rooms together, you can't click into them to chat. The actual rooms are the <code>#</code> and <code>🔊</code> channels underneath. On phone, tap the heading to expand or collapse a group.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <div class="sec-num">04 / YOUR ROOMS</div>
+    <h2>Your channels</h2>
+    <p>Here are the rooms you'll actually use. Start by reading the first two, then make yourself at home in <span class="chip">#kappa</span>.</p>
+
+    <div class="ch-card">
+      <div class="ch-icon">#</div>
+      <div class="ch-body">
+        <div class="ch-name">#welcome</div>
+        <div class="ch-type">Text · read first</div>
+        <div class="ch-desc">A friendly intro to the group. Read it when you arrive.</div>
+      </div>
+    </div>
+    <div class="ch-card">
+      <div class="ch-icon">#</div>
+      <div class="ch-body">
+        <div class="ch-name">#rules</div>
+        <div class="ch-type">Text · read first</div>
+        <div class="ch-desc">The simple ground rules that keep this a kind, focused place. Quick read, worth it.</div>
+      </div>
+    </div>
+    <div class="ch-card">
+      <div class="ch-icon">▤</div>
+      <div class="ch-body">
+        <div class="ch-name">#resources</div>
+        <div class="ch-type">Forum · browse</div>
+        <div class="ch-desc">A library of study material. This one works a little differently: each resource is its own post you can click into. Browse the posts, and open one to read or comment. If you find something useful, you can add a post here too.</div>
+      </div>
+    </div>
+    <div class="ch-card">
+      <div class="ch-icon">#</div>
+      <div class="ch-body">
+        <div class="ch-name">#steady-general</div>
+        <div class="ch-type">Text · wider chat</div>
+        <div class="ch-desc">The broader study chat beyond just our pod. Good for general questions and meeting other learners.</div>
+      </div>
+    </div>
+    <div class="ch-card">
+      <div class="ch-icon">🔊</div>
+      <div class="ch-body">
+        <div class="ch-name">Live</div>
+        <div class="ch-type">Voice · talk &amp; screen share</div>
+        <div class="ch-desc">The voice room for live study sessions. Hop in to talk out loud, ask questions in real time, or share your screen. (More on this in section 6.)</div>
+      </div>
+    </div>
+    <div class="ch-card" style="border-color:var(--accent)">
+      <div class="ch-icon" style="color:var(--accent);border-color:var(--accent)">#</div>
+      <div class="ch-body">
+        <div class="ch-name" style="color:var(--accent)">#kappa</div>
+        <div class="ch-type">Text · your home base</div>
+        <div class="ch-desc">This is your pod's room, the people who started studying when you did. This is where you'll spend most of your time: ask questions, share wins, check in, and keep each other going. Post your first hello here. 👋</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5">
+    <div class="sec-num">05 / TALKING (BY TYPING)</div>
+    <h2>Sending messages</h2>
+    <p>Everything happens in the message box at the bottom of a text channel. Here's the handful of things worth knowing.</p>
+
+    <h3>Send a message</h3>
+    <p>Click the box at the bottom, type, and press <strong>Enter</strong> (or tap the send arrow on phone). That's it. To add a new line without sending, press <strong>Shift + Enter</strong>.</p>
+
+    <h3>Reply to someone</h3>
+    <p>Hover over their message (or long-press on phone) and choose <strong>Reply</strong>. Your message will link back to theirs so everyone knows what you're responding to.</p>
+
+    <h3>Mention someone</h3>
+    <p>Type <code>@</code> followed by their name and pick them from the list. They'll get a notification. Use this when you're talking to a specific person, but don't overdo it.</p>
+
+    <h3>React with an emoji</h3>
+    <p>Hover a message and click the little smiley face to add a reaction. A quick 👍 or 🎉 is a friendly, low-effort way to respond.</p>
+
+    <h3>Share code or a link</h3>
+    <p>Just paste a link and it'll preview automatically. For code, wrap it in three backticks on the line before and after, like <code>```</code>, and it'll show in a clean code block that's easy to read.</p>
+
+    <div class="callout good">
+      <div class="tag">Your first message</div>
+      <p>Head to <span class="chip">#kappa</span> right now and say hi. Tell the pod your name and one thing you're hoping to get out of studying together. It breaks the ice for everyone.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <div class="sec-num">06 / VOICE</div>
+    <h2>Using voice (🔊 Live)</h2>
+    <p>Voice chat sounds intimidating but it's the easiest thing here. It's just hopping on a call with your pod.</p>
+    <ol class="steps">
+      <li>Click the <span class="chip">🔊 Live</span> channel. On desktop/web you join instantly. On phone, tap it then tap <strong>Join Voice</strong>.</li>
+      <li>The first time, your browser or phone may ask permission to use your microphone, tap <strong>Allow</strong>.</li>
+      <li>You're in the call. A small panel shows who else is here. Talk normally, others will hear you.</li>
+      <li>Use the <strong>mute</strong> button (microphone icon) when you're not talking, it cuts background noise for everyone.</li>
+      <li>To leave, click the <strong>hang-up</strong> icon (phone with an X). You can rejoin anytime.</li>
+    </ol>
+
+    <h3>Sharing your screen</h3>
+    <p>Want to show the pod what you're working on? In the voice call, click <strong>Share Your Screen</strong> (a monitor icon). You can share your whole screen or just one window. Great for walking through a problem together. (Screen share works on desktop and web; on phone it's more limited.)</p>
+
+    <div class="callout">
+      <div class="tag">Camera is optional</div>
+      <p>You never have to turn on your camera. Voice-only is completely normal and most people study that way. Join, listen, talk when you want.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7">
+    <div class="sec-num">07 / ETIQUETTE</div>
+    <h2>How to be a great podmate</h2>
+    <p>A study pod works because people show up for each other. None of this is hard, it's mostly just being kind and asking good questions.</p>
+
+    <div class="dd">
+      <div class="dd-col do">
+        <h4>Do</h4>
+        <ul>
+          <li>Ask questions, even "basic" ones. Someone else is wondering the same thing.</li>
+          <li>Share what's working for you, your notes help others.</li>
+          <li>Be encouraging when a podmate is stuck.</li>
+          <li>Use <strong>Reply</strong> so people know which message you mean.</li>
+          <li>Celebrate small wins. Studying is a grind, cheer each other on.</li>
+        </ul>
+      </div>
+      <div class="dd-col dont">
+        <h4>Try not to</h4>
+        <ul>
+          <li>Say "just google it." We help each other here.</li>
+          <li>Mass-mention people with <code>@</code> unless it's important.</li>
+          <li>Post huge walls of text, break it into smaller messages.</li>
+          <li>Feel shy about not knowing something. Nobody's judging.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Asking a good question</h3>
+    <p>The fastest way to get help: say what you're trying to do, what you expected, and what actually happened. "How do I study X" is fine, but "I'm on topic X and confused about Y, here's what I tried" gets you a much better answer.</p>
+
+    <h3>What's a thread?</h3>
+    <p>Sometimes a question grows into a long back-and-forth. To keep the main chat tidy, you can hover a message and choose <strong>Create Thread</strong>, a little side-conversation branches off. You don't need to use threads to start, but now you know what they are when you see one.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8">
+    <div class="sec-num">08 / STUDY TIPS</div>
+    <h2>Making the most of your pod</h2>
+    <p>Your pod is your biggest advantage. Here's how to actually use it.</p>
+
+    <h3>Check in regularly</h3>
+    <p>Pop into <span class="chip">#kappa</span> daily, even just to say what you studied. Small, steady check-ins keep you accountable and keep the pod alive.</p>
+
+    <h3>Study together in 🔊 Live</h3>
+    <p>You don't have to study alone. Jump into <span class="chip">🔊 Live</span> with podmates, even silently working "alongside" others (sometimes called a body-doubling or co-working session) helps you focus.</p>
+
+    <h3>Build the resource library</h3>
+    <p>Found a helpful article, video, or explanation? Post it in <span class="chip">#resources</span> so the whole pod benefits. Teaching and sharing is one of the best ways to lock in what you've learned.</p>
+
+    <h3>Ask early, ask often</h3>
+    <p>Don't sit stuck for hours. Drop your question in <span class="chip">#kappa</span> and keep moving. A pod that asks questions freely learns faster than one that suffers in silence.</p>
+
+    <div class="callout good">
+      <div class="tag">You've got this</div>
+      <p>Showing up is most of the battle. Get in, say hi, ask your first question, and let the pod carry you forward. See you in <span class="chip">#kappa</span>. 🎓</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="mark">kappa<em>.</em></div>
+    <p>Your pod is waiting. Open Discord and say hello.</p>
+  </footer>
+
+</div>
+
+<script>
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.animation = 'rise .7s ease forwards';
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('section').forEach(function(s){
+    s.style.opacity = '0';
+    obs.observe(s);
+  });
+</script>
+</body>
+</html>
